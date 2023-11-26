@@ -1,0 +1,138 @@
+@startuml
+interface Button {
+  press() : void
+}
+
+interface Storage {
+  getProducts() : List<Product>
+  addProduct(product : Product) : void
+}
+
+abstract class Product {
+  -name : String
+  -price : double
+  +Product(name : String, price : double)
+  +getName() : String
+  +setName(name : String) : void
+  +getPrice() : double
+  +setPrice(price : double) : void
+  +toString() : String {abstract}
+  +equals(obj : Object) : boolean {abstract}
+  +hashCode() : int {abstract}
+}
+
+class Cabinet implements Button, Storage {
+  -doors : int
+  -isOpen : boolean
+  -products : List<Product>
+  +Cabinet(doors : int)
+  +getDoors() : int
+  +setDoors(doors : int) : void
+  +isOpen() : boolean
+  +setOpen(open : boolean) : void
+  +getProducts() : List<Product>
+  +setProducts(products : List<Product>) : void
+  +press() : void
+  +getProducts() : List<Product>
+  +addProduct(product : Product) : void
+}
+
+class Thermostat implements Button, Storage {
+  -temperature : double
+  -products : List<Product>
+  +Thermostat(temperature : double)
+  +getTemperature() : double
+  +setTemperature(temperature : double) : void
+  +getProducts() : List<Product>
+  +setProducts(products : List<Product>) : void
+  +press() : void
+  +getProducts() : List<Product>
+  +addProduct(product : Product) : void
+}
+
+class Fridge implements Button, Storage {
+  -power : int
+  -products : List<Product>
+  +Fridge(power : int)
+  +getPower() : int
+  +setPower(power : int) : void
+  +getProducts() : List<Product>
+  +setProducts(products : List<Product>) : void
+  +press() : void
+  +getProducts() : List<Product>
+  +addProduct(product : Product) : void
+}
+
+class Meat extends Product {
+  -weight : double
+  +Meat(name : String, price : double, weight : double)
+  +getWeight() : double
+  +setWeight(weight : double) : void
+  +toString() : String {abstract}
+  +equals(obj : Object) : boolean {abstract}
+  +hashCode() : int {abstract}
+}
+
+class Algae extends Product {
+  -color : String
+  +Algae(name : String, price : double, color : String)
+  +getColor() : String
+  +setColor(color : String) : void
+  +toString() : String {abstract}
+  +equals(obj : Object) : boolean {abstract}
+  +hashCode() : int {abstract}
+}
+
+class Seeds extends Product {
+  -count : int
+  +Seeds(name : String, price : double, count : int)
+  +getCount() : int
+  +setCount(count : int) : void
+  +toString() : String {abstract}
+  +equals(obj : Object) : boolean {abstract}
+  +hashCode() : int {abstract}
+}
+
+enum Room {
+  KITCHEN
+  LIVING_ROOM
+  BEDROOM
+}
+
+abstract class Person {
+  -name : String
+  +Person(name : String)
+  +getName() : String
+  +setName(name : String) : void
+}
+
+class Neznaika extends Person {
+  -location : Room
+  +Neznaika(name : String, location : Room)
+  +getLocation() : Room
+  +setLocation(location : Room) : void
+  +pressButton(button : Button) : void
+  +openDoor(room : Room) : void
+}
+
+class Ponchik extends Person {
+  -mood : String
+  +Ponchik(name : String, mood : String)
+  +getMood() : String
+  +setMood(mood : String) : void
+  +confess(neznaika : Neznaika) : void
+  +sleep() : void
+}
+
+Cabinet ..|> Button
+Cabinet ..|> Storage
+Thermostat ..|> Button
+Thermostat ..|> Storage
+Fridge ..|> Button
+Fridge ..|> Storage
+Meat <|-- Product
+Algae <|-- Product
+Seeds <|-- Product
+Neznaika <|-- Person
+Ponchik <|-- Person
+@enduml

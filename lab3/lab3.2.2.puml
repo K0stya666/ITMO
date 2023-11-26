@@ -1,0 +1,64 @@
+@startuml
+
+class Character {
+  - name: String
+  + Character(name: String)
+  + getName(): String
+  + setName(name: String): void
+  {abstract} + equals(obj: Object): boolean
+  {abstract} + hashCode(): int
+  {abstract} + toString(): String
+}
+
+interface Actions {
+  + pressButtons(): void
+  + lieDown(): void
+  + confess(): void
+}
+
+interface HasDoors {
+  + openDoors(): void
+}
+
+enum ActionType {
+  THINKING
+  CONFESSING
+  SLEEPING
+  SNEAKING
+}
+
+class Cabinet implements HasDoors {
+  + openDoors(): void
+}
+
+class Thermostat implements HasDoors {
+  + openDoors(): void
+}
+
+class Refrigerator implements HasDoors {
+  + openDoors(): void
+}
+
+class Neznayka extends Character implements Actions {
+  + pressButtons(): void
+  + lieDown(): void
+  + confess(): void
+}
+
+class Ponchik extends Character implements Actions {
+  + pressButtons(): void
+  + lieDown(): void
+  + confess(): void
+}
+
+Main --> Character
+Main --> Actions
+Main --> HasDoors
+Main --> ActionType
+Main --> Cabinet
+Main --> Thermostat
+Main --> Refrigerator
+Main --> Neznayka
+Main --> Ponchik
+
+@enduml
