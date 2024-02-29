@@ -1,0 +1,134 @@
+@startuml
+
+package prog.lab2.human{
+
+abstract class Person
+{
+	-name : String
+	-eyes : Eyes
+	-jowls : Jowls[]
+	+getItems() : Weriable[]
+	+getClother() : Clother[]
+	+getJowls() : Jowls[]
+}
+
+class Boy
+ {
+	-memory : Person[]
+	+understand(before, after, between : Person) : void
+	+goToBed(parametres : Adjectives[]) : void
+	+coverUp(object : Linen) : void
+	+equals() : bools
+	+toString() : String
+	+hashCode() : int
+
+}
+
+
+class Girl{
+	+equals() : bool
+	+toString() : String
+	+hashCode() : int
+}
+
+class Eyes
+{
+	-color: Color
+	#watch(adj : Adjective, from : Accessories) : void
+	+equals() : bool
+	+toString() : String
+	+hashCode() : int
+}
+
+enum Jowls
+{
+Plump
+Ruddy
+}
+
+
+}
+
+
+
+package prog.lab2.home{
+
+class Room
+{
+	-peopleInside : Person[]
+	+addPerson(person : Person) : void
+	+removePerson(person : Person) : void
+	+equals() : bool
+	+toString() : String
+	+hashCode() : int
+}
+
+}
+
+
+package prog.lab2.world{
+
+enum Linen{
+Blanket
+}
+enum Weriable
+{
+color : Color
+SmallSuitcase
+}
+
+enum Accessories{
+RoundHornGlasses
+}
+
+enum Clother
+{
+color : Color
+Robe
+Hat
+}
+
+enum Sound
+{
+Steps
+}
+
+}
+
+package prog.lab2{
+
+enum Color
+{
+White
+Brown
+Gray
+}
+
+enum Adjectives{
+Fast
+Hard
+}
+interface Moveable{
+move(room : Room) : void
+}
+interface Talkable
+{
++say(prefix, message : String) : void
+}
+
+}
+
+
+
+
+
+
+
+
+Talkable <|-- Person
+Moveable <|-- Person
+Talkable <|-- Sound
+Person <|-- Boy
+Person <|-- Girl
+
+@enduml

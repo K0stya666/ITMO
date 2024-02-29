@@ -1,0 +1,127 @@
+@startuml
+
+package human {
+
+abstract class Person
+{
+    -name : String
+    +getEmotions() : Emotions[]
+    +fly() : void
+
+}
+
+class Neznayka
+{
+    +press_button() : void
+    +open_door(parametres : openingThings[]) : void
+    +say() : void
+    +lie() : void
+    +put_under_head(parametres : headPad[]) : void
+    +laugh() : void
+    +reproach() : void
+    +sleep() : void
+    +equals() : bool
+    +toString() : String
+    +hashCode() : int
+}
+
+class Donut
+{
+    +follow(object : ) : void
+    +getComfortable () : void
+    +think() : void
+    +confess() : void
+    +unwant() : void
+    +getCourage() : void
+    +make_sure() : void
+    +getUp() : void
+    +sneak() : void
+    +equals() : bool
+    +toString() : String
+    +hashCode() : int
+}
+
+
+
+
+
+
+
+enum thought
+{
+Ripe
+notRipe
+}
+
+enum cowardice {}
+
+enum snore {}
+enum hands {}
+}
+
+package actions {
+interface click_the_button {}
+interface open_the_doors {}
+interface located {}
+interface bring_happiness {}
+interface stretch_out {}
+interface following_suit {}
+interface think {}
+interface refuse {}
+interface admit {}
+interface hear {}
+interface reproach {}
+interface takeCourage {}
+interface decide_on {}
+interface wake_up {}
+interface try {}
+interface step {}
+interface sneak {}
+}
+
+package room {
+class Room
+{
+	+addPerson(person : Person) : void
+	+removePerson(person : Person) : void
+	+equals() : bool
+	+toString() : String
+	+hashCode() : int
+}
+
+class Food {
+    +stored() : void
+    +toDelight() : void
+}
+
+enum closet
+{
+Open
+Close
+}
+
+enum shelf {}
+enum headPad
+{
+Fist
+Pillow
+}
+
+enum plastic
+{
+Soft
+Hard
+}
+
+enum traveling {}
+}
+
+package human_condition {
+enum sleep_power {
+Strong
+notStrong
+}
+
+enum door {}
+}
+@enduml
