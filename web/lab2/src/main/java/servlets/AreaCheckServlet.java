@@ -19,8 +19,9 @@ public class AreaCheckServlet extends HttpServlet {
         double r = Double.parseDouble(req.getParameter("r"));
 
         if (validate(x, y, r) && isHit(x, y, r)) {
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/result.jsp");
-            rd.forward(req, resp);
+//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/result.jsp");
+//            rd.forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/result.jsp");
         }
     }
 
