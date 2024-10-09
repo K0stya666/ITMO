@@ -1,19 +1,33 @@
 plugins {
     id 'java'
+    id 'war'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'lab2'
+version = ''
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation('javax.servlet:javax.servlet-api:4.0.1')
+    implementation('javax.servlet.jsp:javax.servlet.jsp-api:2.3.3')
+
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {
     useJUnitPlatform()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+war {
+    archiveFileName = 'lab2.war'
 }
