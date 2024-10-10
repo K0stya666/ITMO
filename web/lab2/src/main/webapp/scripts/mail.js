@@ -12,14 +12,13 @@ function sendData() {
          r: parseFloat(r)
      });
 
-     fetch('/fcgi-bin/server.jar', {
-         method: 'POST',
+     fetch('/controller', {
+         method: 'GET',
          headers: {'Content-Type': 'application/json'},
          body: data
      })
          .then(response => response.json())
          .then(json => {
-             // const resultContainer = document.getElementById('results');
              const table = document.querySelector("#result tbody");
              let newRow = table.insertRow(-1);
              newRow.innerHTML =
@@ -33,17 +32,6 @@ function sendData() {
                         <td>${json.executionTime}</td>
                     </tr>
                 </table>`
-             // resultContainer.innerHTML +=
-             //     `<table>
-             //        <tr>
-             //            <td>${json.x}</td>
-             //            <td>${json.y}</td>
-             //            <td>${json.r}</td>
-             //            <td>${json.result}</td>
-             //            <td>${json.currentTime}</td>
-             //            <td>${json.executionTime}</td>
-             //        </tr>
-             //    </table>`
 
              tableData.push([json.x, json.y, json.r, json.result, json.currentTime, json.executionTime]);
              saveTableData();

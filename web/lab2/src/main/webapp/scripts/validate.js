@@ -9,21 +9,7 @@ function validateForm() {
         alert("Значение Y должно лежать в диапазоне от -3 до 3")
         return false;
     }
-
-    //alert("Теперь ты гей")
-    return true; // Разрешает отправку формы
-
-    // const params = new URLSearchParams({
-    //     x:x,
-    //     y:y,
-    //     r:r
-    // })
-    //
-    // fetch(`http://localhost:8080/area-check?${params.toString()}`, {
-    //     method: 'POST'
-    // }).then(response => response.json()).then(data => { updateTable(data);
-    // }).catch(error => console.error('Error:', error));
-    // return false;
+    return true;
 }
 
 function onlyOne(checkbox, group) {
@@ -35,20 +21,20 @@ function onlyOne(checkbox, group) {
     })
 }
 
-function updateTable(data) {
-    const table = document.getElementById("results");
-    const newRaw = document.createElement('tr');
-    newRaw.innerHTML = `
-        <td>${data.x}</td>
-        <td>${data.y}</td>
-        <td>${data.r}</td>
-        <td>${data.result ? 'Попадание' : 'Промах'}</td>
-        <td>${data.currentTime}</td>
-        <td>${data.executionTime} ms</td>
-    `;
-
-    // Добавляем строку в таблицу
-    table.appendChild(newRaw);
-}
+// function updateTable(data) {
+//     const table = document.getElementById("results");
+//     const newRaw = document.createElement('tr');
+//     newRaw.innerHTML = `
+//         <td>${data.x}</td>
+//         <td>${data.y}</td>
+//         <td>${data.r}</td>
+//         <td>${data.result ? 'Попадание' : 'Промах'}</td>
+//         <td>${data.currentTime}</td>
+//         <td>${data.executionTime} ms</td>
+//     `;
+//
+//     // Добавляем строку в таблицу
+//     table.appendChild(newRaw);
+// }
 
 

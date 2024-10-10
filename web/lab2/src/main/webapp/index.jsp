@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -54,7 +55,7 @@
 <h1>График попадания точки</h1>
 
 <div class="tables-container">
-    <form id="areaForm" method="GET" onsubmit="return validateForm()">
+    <form id="areaForm" action="${pageContext.request.contextPath}/controller" method="GET" onsubmit="return validateForm()">
         <table>
             <tr>
                 <td>Изменение X:</td>
@@ -85,7 +86,7 @@
                 </td>
             </tr>
             <td colspan="2">
-                <button id="resultButton" type="submit" onclick="event.preventDefault(); sendData()">Проверить</button>
+                <button id="resultButton" type="submit" onclick="sendData()">Проверить</button>
             </td>
         </table>
     </form>
