@@ -59,16 +59,30 @@
         <table>
             <tr>
                 <td>Изменение X:</td>
+
+
+
+
                 <td id="checkbox-container-x">
-                    <label><input type="checkbox" name="x" value="-5" onclick="onlyOne(this, 'x')">-5</label>
-                    <label><input type="checkbox" name="x" value="-4" onclick="onlyOne(this, 'x')">-4</label>
-                    <label><input type="checkbox" name="x" value="-3" onclick="onlyOne(this, 'x')">-3</label>
-                    <label><input type="checkbox" name="x" value="-2" onclick="onlyOne(this, 'x')">-2</label>
-                    <label><input type="checkbox" name="x" value="-1" onclick="onlyOne(this, 'x')">-1</label>
-                    <label><input type="checkbox" name="x" value="0" onclick="onlyOne(this, 'x')">0</label>
-                    <label><input type="checkbox" name="x" value="1" onclick="onlyOne(this, 'x')">1</label>
-                    <label><input type="checkbox" name="x" value="2" onclick="onlyOne(this, 'x')">2</label>
-                    <label><input type="checkbox" name="x" value="3" onclick="onlyOne(this, 'x')">3</label>
+                    <%
+                        for (int i = -3; i <= 5; i++) {
+                    %>
+
+                    <label><input type="radio" name="x" value="<%= i%>>"><%=i%></label>
+
+                    <%
+                        }
+                    %>
+
+<%--                    <label><input type="checkbox" name="x" value="-5" onclick="onlyOne(this, 'x')">-5</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="-4" onclick="onlyOne(this, 'x')">-4</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="-3" onclick="onlyOne(this, 'x')">-3</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="-2" onclick="onlyOne(this, 'x')">-2</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="-1" onclick="onlyOne(this, 'x')">-1</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="0" onclick="onlyOne(this, 'x')">0</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="1" onclick="onlyOne(this, 'x')">1</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="2" onclick="onlyOne(this, 'x')">2</label>--%>
+<%--                    <label><input type="checkbox" name="x" value="3" onclick="onlyOne(this, 'x')">3</label>--%>
                 </td>
             </tr>
             <tr>
