@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%--TODO Убрать приближение Адама--%>
+<%--TODO Исправить ошибку с логгерами на wildfly--%>
+<%--TODO Иконку для title--%>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,7 +17,7 @@
 <header>
     <h1>ФИО: Елисеев Константин Иванович</h1>
     <h1>Группа: P3208</h1>
-    <h1>Вариант: 94</h1>
+    <h1>Вариант: 456752 </h1>
 </header>
 
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
@@ -59,30 +64,16 @@
         <table>
             <tr>
                 <td>Изменение X:</td>
-
-
-
-
                 <td id="checkbox-container-x">
                     <%
                         for (int i = -3; i <= 5; i++) {
                     %>
 
-                    <label><input type="radio" name="x" value="<%= i%>>"><%=i%></label>
+                    <label><input type="radio" name="x" value="<%= i %>"><%=i%></label>
 
                     <%
                         }
                     %>
-
-<%--                    <label><input type="checkbox" name="x" value="-5" onclick="onlyOne(this, 'x')">-5</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="-4" onclick="onlyOne(this, 'x')">-4</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="-3" onclick="onlyOne(this, 'x')">-3</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="-2" onclick="onlyOne(this, 'x')">-2</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="-1" onclick="onlyOne(this, 'x')">-1</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="0" onclick="onlyOne(this, 'x')">0</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="1" onclick="onlyOne(this, 'x')">1</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="2" onclick="onlyOne(this, 'x')">2</label>--%>
-<%--                    <label><input type="checkbox" name="x" value="3" onclick="onlyOne(this, 'x')">3</label>--%>
                 </td>
             </tr>
             <tr>
@@ -91,12 +82,22 @@
             </tr>
             <tr>
                 <td>Изменение R:</td>
-                <td id="checkbox-container-R">
-                    <label><input type="checkbox" name="r" value="1" onclick="onlyOne(this, 'r')">1</label>
-                    <label><input type="checkbox" name="r" value="2" onclick="onlyOne(this, 'r')">2</label>
-                    <label><input type="checkbox" name="r" value="3" onclick="onlyOne(this, 'r')">3</label>
-                    <label><input type="checkbox" name="r" value="4" onclick="onlyOne(this, 'r')">4</label>
-                    <label><input type="checkbox" name="r" value="5" onclick="onlyOne(this, 'r')">5</label>
+                <td id="button-container-R">
+                    <input type="hidden" name="r" id="selectedR" value="">
+
+                    <%
+                        for (double i = 1; i <= 3; i += 0.5) {
+                    %>
+                        <button id="r" class="value-button" type="button" name="r" onclick="handleButtonClick(<%= i %>, this)"><%= i %></button>
+                    <%
+                        }
+                    %>
+
+<%--                    <label><input type="checkbox" name="r" value="1" onclick="onlyOne(this, 'r')">1</label>--%>
+<%--                    <label><input type="checkbox" name="r" value="2" onclick="onlyOne(this, 'r')">2</label>--%>
+<%--                    <label><input type="checkbox" name="r" value="3" onclick="onlyOne(this, 'r')">3</label>--%>
+<%--                    <label><input type="checkbox" name="r" value="4" onclick="onlyOne(this, 'r')">4</label>--%>
+<%--                    <label><input type="checkbox" name="r" value="5" onclick="onlyOne(this, 'r')">5</label>--%>
                 </td>
             </tr>
             <td colspan="2">
@@ -121,6 +122,7 @@
     </table>
 </div>
 
+<script type="text/javascript" src="scripts/script.js"></script>
 <script type="text/javascript" src="scripts/validate.js"></script>
 </body>
 </html>
