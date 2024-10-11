@@ -24,9 +24,11 @@ public class AreaCheckServlet extends HttpServlet {
 
         logger.info("Полученные параметры: x = " + x + ", y = " + y + ", r = " + r);
 
-        if (isHit(x, y, r)) {
-            req.getRequestDispatcher("./result.jsp").forward(req, resp);
-        }
+        req.getRequestDispatcher("./result.jsp").forward(req, resp);
+
+//        if (isHit(x, y, r)) {
+//            req.getRequestDispatcher("./result.jsp").forward(req, resp);
+//        }
     }
 
     private static boolean isHit(double x, double y, double r) {

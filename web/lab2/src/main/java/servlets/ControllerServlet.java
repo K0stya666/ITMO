@@ -33,10 +33,8 @@ public class ControllerServlet extends HttpServlet {
                 context.setAttribute("r", r);
 
                 req.getRequestDispatcher("/areaCheck").forward(req, resp);
-//                resp.sendRedirect("./checkArea?" + req.getQueryString());
             } else {
                 req.setAttribute("error", "Переданные значения не валидны");
-                req.getRequestDispatcher("/index.jsp").forward(req, resp);
             }
 
         } catch (NumberFormatException e) {
