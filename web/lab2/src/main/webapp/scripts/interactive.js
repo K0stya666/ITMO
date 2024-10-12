@@ -1,10 +1,11 @@
 document.getElementById('graph').addEventListener('click', e => {
-    let x = Math.round((e.offsetX - 150) / 30);
-    let y = (e.offsetY - 150) / 30;
+    let r = document.getElementById('selectedR').value;
+    let x = Math.floor(((e.offsetX - 150) * r) / 120);
+    let y = -((e.offsetY - 150) * r) / 120;
 
     console.log(x, y);
 
-    let r = document.getElementById('selectedR').value;
+
 
     console.log(r)
 
@@ -15,8 +16,6 @@ document.getElementById('graph').addEventListener('click', e => {
             radioX.checked = true;
         }
         // document.querySelector(`input[name="x"][value="${x}"]`).checked = true;
-
-
 
         document.getElementById('y').value = y;
 
