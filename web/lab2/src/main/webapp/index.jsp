@@ -13,7 +13,6 @@
     <meta charset="UTF-8">
     <title>Лабораторная работа по web-programming</title>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="validate.js"></script>
 </head>
 <body >
 <header>
@@ -22,7 +21,7 @@
     <h1>Вариант: 456752 </h1>
 </header>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+<svg id="graph" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
 
     <!-- square-->
     <rect x="150" y="30" width="120" height="120" fill="#122028" fill-opacity="0.6"></rect>
@@ -69,6 +68,8 @@
             <tr>
                 <td>Изменение X:</td>
                 <td id="checkbox-container-x">
+                    <input type="hidden" id="selectedX">
+
                     <%
                         for (int i = -3; i <= 5; i++) {
                     %>
@@ -106,6 +107,7 @@
     </form>
 </div>
 
-
+<script type="text/javascript" src="scripts/validate.js"></script>
+<script type="text/javascript" src="scripts/interactive.js"></script>
 </body>
 </html>
