@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+
+<%--TODO Перерисовать график--%>
+<%--TODO Где ввод y написать от скольки и до скольки--%>
 
 <%--TODO Убрать приближение Адама--%>
 <%--TODO Исправить ошибку с логгерами на wildfly--%>
@@ -20,13 +23,15 @@
 </header>
 
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
-    <!-- triangle-->
-    <polygon points="90,150 150,30 150,150" fill="#122028" fill-opacity="0.6"></polygon>
 
     <!-- square-->
-    <rect x="150" y="150" width="120" height="120" fill="#122028" fill-opacity="0.6"></rect>
+    <rect x="150" y="30" width="120" height="120" fill="#122028" fill-opacity="0.6"></rect>
+
+    <!-- triangle-->
+    <polygon points="150,150 270,150 150,210" fill="#122028" fill-opacity="0.6"></polygon>
+
     <!-- circle-->
-    <path d="M 150 150 L 90 150 C 90 185 125 210 150 210 Z" fill="#122028" fill-opacity="0.6"></path>
+    <path d="M 150 150 L 30 150 C 30 210 90 270 150 270 Z" fill="#122028" fill-opacity="0.6"></path>
 
     <line x1="0" y1="150" x2="300" y2="150" stroke="#122028"></line>
     <line x1="150" y1="0" x2="150" y2="300" stroke="#122028"></line>
@@ -77,7 +82,7 @@
             </tr>
             <tr>
                 <td>Изменение Y:</td>
-                <td><label for="y"></label><input type="text" name="y" id="y"></td>
+                <td><label for="y"></label><input type="text" name="y" id="y" placeholder="Введите число от -5 до 5"></td>
             </tr>
             <tr>
                 <td>Изменение R:</td>
