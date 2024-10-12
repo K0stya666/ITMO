@@ -29,12 +29,3 @@ function handleButtonClick(value, button) {
 
     button.classList.add('selected');
 }
-
-// function onlyOne(checkbox, group) {
-//     const checkboxes = document.querySelectorAll(`input[name='${group}']`)
-//     checkboxes.forEach((cb) => {
-//         if (cb !== checkbox) {
-//             cb.checked = false;
-//         }
-//     })
-// }
