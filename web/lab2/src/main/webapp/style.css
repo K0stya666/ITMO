@@ -47,6 +47,7 @@ button {
 
     color: #F5F5DC;
     border: 2px none; /*TODO Пофиксить увеличение картинки при нажатии на кнопку*/
+    border-radius: 10px;
     cursor: pointer;
 }
 

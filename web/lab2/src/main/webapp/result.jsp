@@ -1,4 +1,6 @@
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="java.util.List" %>
+<%@ page import="server.Point" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ru">
@@ -11,11 +13,13 @@
 <body>
 
     <%
-        double x = (double) request.getAttribute("x");
-        double y = (double) request.getAttribute("y");
-        double r = (double) request.getAttribute("r");
-        Boolean isHit = (Boolean) request.getAttribute("isHit");
-        LocalDate date = (LocalDate) request.getAttribute("date");
+//        double x = (double) session.getAttribute("x");
+//        double y = (double) session.getAttribute("y");
+//        double r = (double) session.getAttribute("r");
+//        Boolean isHit = (Boolean) session.getAttribute("isHit");
+//        LocalDate date = (LocalDate) session.getAttribute("date");
+
+        List<Point> points = (List<Point>) request.getAttribute("points");
     %>
 
     <table>

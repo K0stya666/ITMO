@@ -10,8 +10,7 @@
     <meta charset="UTF-8">
     <title>Лабораторная работа по web-programming</title>
     <link rel="stylesheet" href="style.css">
-
-    <script type="text/javascript" src="scripts/mail.js"></script>
+    <script type="text/javascript" src="validate.js"></script>
 </head>
 <body >
 <header>
@@ -122,7 +121,6 @@
     </table>
 </div>
 
-<script type="text/javascript" src="scripts/script.js"></script>
-<script type="text/javascript" src="scripts/validate.js"></script>
+
 </body>
 </html>
