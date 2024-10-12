@@ -48,10 +48,10 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private static boolean validate(double x, double y, double r) {
-        int[] valuesX = {-3, -2, -1, 0, 1, 2, 3, 4, 5};
+//        int[] valuesX = {-3, -2, -1, 0, 1, 2, 3, 4, 5};
         double[] valuesR = {1, 1.5, 2, 2.5, 3};
 
-        if (Arrays.stream(valuesX).noneMatch(value -> value == x)) return false;
+        if (x < -3 || x > 5) return false;
         if (y < -5 || y > 5) return false;
         return Arrays.stream(valuesR).anyMatch(value -> value == r);
     }

@@ -68,17 +68,13 @@
             <tr>
                 <td>Изменение X:</td>
                 <td id="checkbox-container-x">
-                    <input type="hidden" id="selectedX">
 
-                    <%
-                        for (int i = -3; i <= 5; i++) {
-                    %>
+                    <% for (int i = -3; i <= 5; i ++) { %>
+                        <label><input type="radio" name="x" value="<%= i %>"><%=i%></label>
+                    <% } %>
 
-                    <label><input type="radio" name="x" value="<%= i %>"><%=i%></label>
+<%--                    <label><input id="customX" type="radio" name="x" value="" hidden disabled></label>--%>
 
-                    <%
-                        }
-                    %>
                 </td>
             </tr>
             <tr>
