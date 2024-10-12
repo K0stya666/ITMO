@@ -1,22 +1,30 @@
 function validateForm() {
+    let isValid = true;
+
+    let selectedX = document.querySelector('input[name="x"]:checked')
+
+    const x = selectedX ? selectedX.value : "";
     const y = document.getElementById("y").value.trim();
+    const r = document.getElementById("selectedR").value.trim();
 
     if (y === "" || isNaN(y)) {
         alert("Поле Y должно быть числом!");
-        return false;
-    } else if (y < -5 || y > 3) {
-        alert("Значение Y должно лежать в диапазоне от -5 до 5")
-        return false;
+        isValid = false;
     }
 
     let yValue = parseInt(y);
 
-    if (yValue < -5 || yValue > 3) {
+    if (yValue < -5 || yValue > 5) {
         alert("Значение Y должно лежать в диапазоне от -5 до 5")
-        return false;
+        isValid =  false;
     }
 
-    return true;
+    if (x === "" || isNaN(x) || r === "" || isNaN(r)) {
+        alert("Введите пожалуйста все параметры формы")
+        isValid = false;
+    }
+
+    return isValid;
 }
 
 function handleButtonClick(value, button) {
