@@ -44,8 +44,8 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private static boolean isHit(double x, double y, double r) {
-        if (x <= 0 && y <= 0 && (x * x + y * y <= (r / 2) * (r / 2))) return true;  // Четверть круга
-        if (x >= 0 && y >= 0 && x <= r && y <= r / 2) return true;                  // Прямоугольник
+        if (x <= 0 && y <= 0 && (x * x + y * y <= r * r)) return true;              // Четверть круга
+        if (x >= 0 && y >= 0 && x <= r && y <= r) return true;                      // Прямоугольник
         return x >= 0 && y <= 0 && x <= r && y >= (x - r);                          // Треугольник
     }
 }
