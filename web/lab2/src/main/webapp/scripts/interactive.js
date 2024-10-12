@@ -1,7 +1,7 @@
 document.getElementById('graph').addEventListener('click', e => {
     let r = document.getElementById('selectedR').value;
     let x = Math.floor(((e.offsetX - 150) * r) / 120);
-    let y = -((e.offsetY - 150) * r) / 120;
+    let y = Number((-((e.offsetY - 150) * r) / 120).toFixed(3));
 
     console.log(x, y);
 
