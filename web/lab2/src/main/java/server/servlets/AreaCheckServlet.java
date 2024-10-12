@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import server.Point;
-
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,12 +32,6 @@ public class AreaCheckServlet extends HttpServlet {
         boolean isHit = isHit(x, y, r);
 
         logger.info("Полученные параметры: x = " + x + ", y = " + y + ", r = " + r);
-
-//        session.setAttribute("x", x);
-//        session.setAttribute("y", y);
-//        session.setAttribute("r", r);
-//        session.setAttribute("isHit", isHit);
-//        session.setAttribute("date", date);
 
         Point point = new Point(x, y, r, isHit, date);
         List<Point> points = (List<Point>) session.getAttribute("points");

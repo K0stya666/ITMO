@@ -13,13 +13,7 @@
 <body>
 
     <%
-//        double x = (double) session.getAttribute("x");
-//        double y = (double) session.getAttribute("y");
-//        double r = (double) session.getAttribute("r");
-//        Boolean isHit = (Boolean) session.getAttribute("isHit");
-//        LocalDate date = (LocalDate) session.getAttribute("date");
-
-        List<Point> points = (List<Point>) request.getAttribute("points");
+        List<Point> points = (List<Point>) session.getAttribute("points");
     %>
 
     <table>
@@ -31,22 +25,22 @@
             <th>Время</th>
         </tr>
 
+        <%
+            for (int i = 0; i < points.size(); i++) {
+                Point point = points.get(i);
+        %>
+
         <tr>
-            <th><%=x%></th>
-            <th><%=y%></th>
-            <th><%=r%></th>
-            <th><%=isHit ? "Попадание" : "Промах"%></th>
-            <th><%=date%></th>
+            <th><%=point.getX()%></th>
+            <th><%=point.getY()%></th>
+            <th><%=point.getR()%></th>
+            <th><%=point.isHit() ? "Попадание" : "Промах"%></th>
+            <th><%=point.getDate()%></th>
         </tr>
 
-<%--&lt;%&ndash;        <tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn><%=x%></tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn><%=y%></tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn><%=r%></tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn>хуй</tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn>хуй</tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <tn>хуй</tn>&ndash;%&gt;--%>
-<%--&lt;%&ndash;        </tr>&ndash;%&gt;--%>
-<%--    </table>--%>
+        <%
+            }
+        %>
+    </table>
 </body>
 </html>
