@@ -92,33 +92,13 @@
                         }
                     %>
 
-<%--                    <label><input type="checkbox" name="r" value="1" onclick="onlyOne(this, 'r')">1</label>--%>
-<%--                    <label><input type="checkbox" name="r" value="2" onclick="onlyOne(this, 'r')">2</label>--%>
-<%--                    <label><input type="checkbox" name="r" value="3" onclick="onlyOne(this, 'r')">3</label>--%>
-<%--                    <label><input type="checkbox" name="r" value="4" onclick="onlyOne(this, 'r')">4</label>--%>
-<%--                    <label><input type="checkbox" name="r" value="5" onclick="onlyOne(this, 'r')">5</label>--%>
                 </td>
             </tr>
             <td colspan="2">
-                <button id="resultButton" type="submit" onclick="sendData()">Проверить</button>
+                <button id="resultButton" type="submit">Проверить</button>
             </td>
         </table>
     </form>
-    <table id="result">
-        <thead>
-        <tr>
-            <th>X</th>
-            <th>Y</th>
-            <th>R</th>
-            <th>Результат</th>
-            <th>Время</th>
-            <th>Время выполнения</th>
-        </tr>
-        </thead>
-        <tbody id="results">
-            <!-- Здесь будут появляться динамически подгружаемые данные -->
-        </tbody>
-    </table>
 </div>
 
 
