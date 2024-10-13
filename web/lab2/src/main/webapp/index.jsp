@@ -16,6 +16,8 @@
     <meta charset="UTF-8">
     <title>Лабораторная работа по web-programming</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="icon" href="images/shit.png" type="image/apple-touch-icon.png">
 </head>
 <body>
 
@@ -118,7 +120,7 @@
                 </td>
             </tr>
             <td colspan="2">
-                <button id="resultButton" type="submit">Проверить</button>
+                <button class="resultButton" type="submit">Проверить</button>
             </td>
         </table>
     </form>
@@ -129,7 +131,7 @@
             <th>Y</th>
             <th>R</th>
             <th>Результат</th>
-            <th>Время</th>
+            <th>Дата</th>
         </tr>
 
         <%
