@@ -23,7 +23,7 @@
             <th>Y</th>
             <th>R</th>
             <th>Результат</th>
-            <th>Время</th>
+<%--            <th>Время</th>--%>
         </tr>
 
 <%--        <%--%>
@@ -36,7 +36,7 @@
             <th><%=point.getY()%></th>
             <th><%=point.getR()%></th>
             <th><%=point.isHit() ? "Попадание" : "Промах"%></th>
-            <th><%=point.getDate()%></th>
+<%--            <th><%=point.getDate()%></th>--%>
         </tr>
 
 <%--        <%--%>
@@ -45,7 +45,7 @@
     </table>
 
     <a href="index.jsp">
-        <button>На главную</button>
+        <button class="resultButton">На главную</button>
     </a>
 </body>
 </html>
