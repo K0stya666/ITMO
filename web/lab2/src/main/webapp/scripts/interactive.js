@@ -1,7 +1,18 @@
 document.getElementById('graph').addEventListener('click', e => {
+    let svg = document.getElementById('graph');
+    let svgX = e.offsetX;
+    let svgY = e.offsetY;
+
     let r = document.getElementById('selectedR').value;
-    let x = ((e.offsetX - 150) * r) / 120;
-    let y = -((e.offsetY - 150) * r) / 120;
+    let x = ((svgX - 150) * r) / 120;
+    let y = -((svgY - 150) * r) / 120;
+
+    let point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    point.setAttribute('cx', svgX);
+    point.setAttribute('cy', svgY)
+    point.setAttribute('r', 3);
+    point.setAttribute('fill', 'red');
+    svg.appendChild(point);
 
     console.log(x, y);
     console.log(r)
