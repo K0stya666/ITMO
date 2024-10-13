@@ -110,6 +110,14 @@
     </form>
 
     <table>
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Результат</th>
+            <th>Время</th>
+        </tr>
+
         <%
             if (points != null) {
                 for (int i = 0; i < points.size(); i++) {
