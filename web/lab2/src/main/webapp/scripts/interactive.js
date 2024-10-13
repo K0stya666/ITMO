@@ -21,5 +21,7 @@ document.getElementById('graph').addEventListener('click', e => {
         document.getElementById('y').value = y;
         let queryParams = `?x=${x.toFixed(3)}&y=${y.toFixed(3)}&r=${r}`;
         window.location.href = 'http://localhost:9696/lab2/controller' + queryParams;
+    } else {
+        alert("Выберите значение R")
     }
 });
