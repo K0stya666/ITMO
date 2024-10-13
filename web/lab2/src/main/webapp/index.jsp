@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="server.Point" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <%--TODO Перерисовать график--%>
@@ -14,7 +16,12 @@
     <title>Лабораторная работа по web-programming</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body >
+<body>
+
+<%
+    List<Point> points = (List<Point>) application.getAttribute("points");
+%>
+
 <header>
     <h1>ФИО: Елисеев Константин Иванович</h1>
     <h1>Группа: P3208</h1>
@@ -55,9 +62,9 @@
     <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"></polygon>
 
 
-    <!-- точка результата-->
-    <circle id="pointer" r="5" cx="150" cy="150" fill-opacity="0.9" fill="red" stroke="firebrick"
-            visibility="hidden"></circle>
+<%--    <!-- точка результата-->--%>
+<%--    <circle id="pointer" r="5" cx="150" cy="150" fill-opacity="0.9" fill="red" stroke="firebrick"--%>
+<%--            visibility="hidden"></circle>--%>
 </svg>
 
 <h1>График попадания точки</h1>
@@ -101,6 +108,28 @@
             </td>
         </table>
     </form>
+
+    <table>
+        <%
+            if (points != null) {
+                for (int i = 0; i < points.size(); i++) {
+                    Point point = points.get(i);
+        %>
+
+        <tr>
+            <th><%=point.getX()%></th>
+            <th><%=point.getY()%></th>
+            <th><%=point.getR()%></th>
+            <th><%=point.isHit() ? "Попадание" : "Промах"%></th>
+            <th><%=point.getDate()%></th>
+        </tr>
+
+        <%
+                }
+            }
+        %>
+    </table>
+
 </div>
 
 <script type="text/javascript" src="scripts/validate.js"></script>
