@@ -15,7 +15,8 @@
 <body>
 
     <%
-        List<Point> points = (List<Point>) application.getAttribute("points");
+//        List<Point> points = (List<Point>) application.getAttribute("points");
+        Point point = (Point) application.getAttribute("point");
     %>
 
     <table id="result">
@@ -27,10 +28,10 @@
             <th>Время</th>
         </tr>
 
-        <%
-            for (int i = 0; i < points.size(); i++) {
-                Point point = points.get(i);
-        %>
+<%--        <%--%>
+<%--            for (int i = 0; i < points.size(); i++) {--%>
+<%--                Point point = points.get(i);--%>
+<%--        %>--%>
 
         <tr>
             <th><%=point.getX()%></th>
@@ -40,9 +41,13 @@
             <th><%=point.getDate()%></th>
         </tr>
 
-        <%
-            }
-        %>
+<%--        <%--%>
+<%--            }--%>
+<%--        %>--%>
     </table>
+
+    <a href="index.jsp">
+        <button>На главную</button>
+    </a>
 </body>
 </html>
