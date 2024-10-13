@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <title>Лабораторная работа по web-programming</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="icon" href="images/shit.png" type="image/apple-touch-icon.png">
 </head>
 
 <body>
