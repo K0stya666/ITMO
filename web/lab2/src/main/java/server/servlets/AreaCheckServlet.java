@@ -21,7 +21,6 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
         ServletContext context = getServletContext();
         LocalDate date = LocalDate.now();
 
@@ -34,6 +33,7 @@ public class AreaCheckServlet extends HttpServlet {
         logger.info("Полученные параметры: x = " + x + ", y = " + y + ", r = " + r);
 
         Point point = new Point(x, y, r, isHit, date);
+        context.setAttribute("point", point);
 
         List<Point> points = (List<Point>) context.getAttribute("points");
         if (points == null) points = new ArrayList<>();
