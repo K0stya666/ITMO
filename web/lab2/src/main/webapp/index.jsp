@@ -3,13 +3,6 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
-<%--TODO Перерисовать график--%>
-<%--TODO Где ввод y написать от скольки и до скольки--%>
-
-<%--TODO Убрать приближение Адама--%>
-<%--TODO Исправить ошибку с логгерами на wildfly--%>
-<%--TODO Иконку для title--%>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -119,10 +112,14 @@
 
                 </td>
             </tr>
-            <td colspan="2">
-                <button class="resultButton" type="submit">Проверить</button>
-            </td>
+<%--            <td colspan="2">--%>
+<%--                --%>
+<%--            </td>--%>
         </table>
+
+        <div style="display: grid; place-items: center;">
+            <button class="resultButton" type="submit">Проверить</button>
+        </div>
     </form>
 
     <table>
