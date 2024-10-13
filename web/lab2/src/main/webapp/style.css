@@ -67,7 +67,7 @@ button:active {
     transform: scale(0.95); /* Немного уменьшает размер кнопки при нажатии */
 }
 
-#resultButton {
+.resultButton {
     width: auto;
     background-color: var(--main-button-color)  ;
     color: white;
@@ -75,6 +75,6 @@ button:active {
     cursor: pointer;
 }
 
-#resultButton:hover {
+.resultButton:hover {
     background-color: var(--main-button-color-hover)  ;
 }
