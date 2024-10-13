@@ -2,8 +2,6 @@
 <%@ page import="server.Point" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
-<%--TODO Заменить сессию на контекст--%>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>

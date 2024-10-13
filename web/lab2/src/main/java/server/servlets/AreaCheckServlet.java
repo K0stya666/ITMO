@@ -6,7 +6,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import server.Point;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -38,7 +37,7 @@ public class AreaCheckServlet extends HttpServlet {
         List<Point> points = (List<Point>) context.getAttribute("points");
         if (points == null) points = new ArrayList<>();
         points.add(point);
-        context.setAttribute("points", points); // Оставить
+        context.setAttribute("points", points);
 
         req.getRequestDispatcher("/result.jsp").forward(req, resp);
     }

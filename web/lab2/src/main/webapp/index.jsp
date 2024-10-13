@@ -1,7 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="server.Point" %>
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <%--TODO Перерисовать график--%>
@@ -63,8 +62,6 @@
     <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000720"></polygon>
     <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"></polygon>
 
-
-
     <%
         if (points != null) {
             for (int i = 0; i < points.size(); i++) {
@@ -98,8 +95,6 @@
                     <% for (int i = -3; i <= 5; i ++) { %>
                         <label><input type="radio" name="x" value="<%= i %>"><%=i%></label>
                     <% } %>
-
-<%--                    <label><input id="customX" type="radio" name="x" value="" hidden disabled></label>--%>
 
                 </td>
             </tr>
