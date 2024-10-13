@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="server.Point" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <%--TODO Перерисовать график--%>
@@ -62,9 +64,26 @@
     <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"></polygon>
 
 
-<%--    <!-- точка результата-->--%>
-<%--    <circle id="pointer" r="5" cx="150" cy="150" fill-opacity="0.9" fill="red" stroke="firebrick"--%>
-<%--            visibility="hidden"></circle>--%>
+
+    <%
+        if (points != null) {
+            for (int i = 0; i < points.size(); i++) {
+                Point point = points.get(i);
+
+                double x = point.getX();
+                double y = point.getY();
+                double r = point.getR();
+                boolean isHit = point.isHit();
+
+                double svgX = ((x * 120) / r) + 150;
+                double svgY = ((- y * 120) / r) + 150;
+    %>
+        <circle r="3" cx="<%=svgX%>" cy="<%=svgY%>" fill-opacity="0.9" fill="<%=isHit ? "green" : "red"%>" stroke="<%=isHit ? "green" : "firebrick"%>"></circle>
+    <%
+            }
+        }
+    %>
+
 </svg>
 
 <h1>График попадания точки</h1>
@@ -122,15 +141,21 @@
             if (points != null) {
                 for (int i = 0; i < points.size(); i++) {
                     Point point = points.get(i);
+
+                    double x = point.getX();
+                    double y = point.getY();
+                    double r = point.getR();
+                    boolean isHit = point.isHit();
+                    LocalDate date = point.getDate();
         %>
 
-        <tr>
-            <th><%=point.getX()%></th>
-            <th><%=point.getY()%></th>
-            <th><%=point.getR()%></th>
-            <th><%=point.isHit() ? "Попадание" : "Промах"%></th>
-            <th><%=point.getDate()%></th>
-        </tr>
+                    <tr>
+                        <th><%=x%></th>
+                        <th><%=y%></th>
+                        <th><%=r%></th>
+                        <th><%=isHit ? "Попадание" : "Промах"%></th>
+                        <th><%=date%></th>
+                    </tr>
 
         <%
                 }
