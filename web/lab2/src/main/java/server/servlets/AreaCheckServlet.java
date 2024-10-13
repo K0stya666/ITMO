@@ -34,11 +34,11 @@ public class AreaCheckServlet extends HttpServlet {
         logger.info("Полученные параметры: x = " + x + ", y = " + y + ", r = " + r);
 
         Point point = new Point(x, y, r, isHit, date);
-        List<Point> points = (List<Point>) session.getAttribute("points");
+
+        List<Point> points = (List<Point>) context.getAttribute("points");
         if (points == null) points = new ArrayList<>();
         points.add(point);
-
-        session.setAttribute("points", points);
+        context.setAttribute("points", points); // Оставить
 
         req.getRequestDispatcher("/result.jsp").forward(req, resp);
     }

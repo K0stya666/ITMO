@@ -1,7 +1,9 @@
-<%@ page import="java.time.LocalDate" %>
 <%@ page import="java.util.List" %>
 <%@ page import="server.Point" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+
+<%--TODO Заменить сессию на контекст--%>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,10 +15,10 @@
 <body>
 
     <%
-        List<Point> points = (List<Point>) session.getAttribute("points");
+        List<Point> points = (List<Point>) application.getAttribute("points");
     %>
 
-    <table>
+    <table id="result">
         <tr>
             <th>X</th>
             <th>Y</th>
