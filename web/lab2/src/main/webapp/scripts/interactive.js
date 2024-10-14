@@ -25,3 +25,7 @@ document.getElementById('graph').addEventListener('click', e => {
         alert("Выберите значение R")
     }
 });
+
+function clearTable(points) {
+    // points =
+}

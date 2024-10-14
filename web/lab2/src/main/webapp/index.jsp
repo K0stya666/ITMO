@@ -112,9 +112,6 @@
 
                 </td>
             </tr>
-<%--            <td colspan="2">--%>
-<%--                --%>
-<%--            </td>--%>
         </table>
 
         <div style="display: grid; place-items: center;">
@@ -122,7 +119,7 @@
         </div>
     </form>
 
-    <table>
+    <table id="resultTable">
         <tr>
             <th>X</th>
             <th>Y</th>
@@ -156,6 +153,19 @@
             }
         %>
     </table>
+
+<%--    <div style="display: grid; place-items: center;">--%>
+<%--        <button id="clearButton" class="resultButton" onclick="clearTable(<%=points%>)">Очистить историю</button>--%>
+
+<%--        <script>--%>
+<%--            const button = document.getElementById('clearButton');--%>
+
+<%--            function clearTable() {--%>
+<%--                <%assert points != null; points.clear();%>--%>
+<%--                alert("История была очищена")--%>
+<%--            }--%>
+<%--        </script>--%>
+<%--    </div>--%>
 
 </div>
 
