@@ -26,13 +26,15 @@
 
 <svg id="graph" xmlns="http://www.w3.org/2000/svg" width="500" height="500">
 
-<%--    <rect id="square" x="150" y="30" width="120" height="120" fill="#122028" fill-opacity="0.6"></rect>--%>
-<%--    <polygon id="triangle" points="150,150 270,150 150,210" fill="#122028" fill-opacity="0.6"></polygon>--%>
-<%--    <path id="circle" d="M 150 150 L 30 150 C 30 210 90 270 150 270 Z" fill="#122028" fill-opacity="0.6"></path>--%>
-
     <rect id="square" x="250" y="50" width="200" height="200" fill="#122028" fill-opacity="0.6"></rect>
     <polygon id="triangle" points="250,250 450,250 250,350" fill="#122028" fill-opacity="0.6"></polygon>
-    <path id="circle" d="M 250 250 L 50 250 C 50 350 150 450 250 450 Z" fill="#122028" fill-opacity="0.6"></path>
+<%--    <path id="circle" d="M 250 250 L 50 250 A 200 200 0 0 1 450 250 Z" fill="#122028" fill-opacity="0.6"></path>--%>
+<%--    <path id="circle" d="M 250 250 L 50 250 A 200 200 0 1 0 450 250 Z" fill="#122028" fill-opacity="0.6"></path>--%>
+<%--    <path id="circle" d="M 250 250 L 50 250 A 200 200 0 1 0 450 250 Z" fill="#122028" fill-opacity="0.6"></path>--%>
+    <path id="circle" d="M 250 250 L 50 250 A 200 200 0 0 0 250 450 Z" fill="#122028" fill-opacity="0.6"></path>
+
+
+<%--    <path id="circle" d="M 250 250 L 50 250 C 50 350 150 450 250 450 Z" fill="#122028" fill-opacity="0.6"></path>--%>
 
     <!--X line-->
     <line x1="0" y1="250" x2="500" y2="250" stroke="#122028"></line>
@@ -103,10 +105,10 @@
                 double r = point.getR();
                 boolean isHit = point.isHit();
 
-                double svgX = ((x * 120) / r) + 150;
-                double svgY = ((- y * 120) / r) + 150;
+                double svgX = ((x * 120) / r) + 250;
+                double svgY = ((- y * 120) / r) + 250;
     %>
-        <circle r="3" cx="<%=svgX%>" cy="<%=svgY%>" fill-opacity="0.9" fill="<%=isHit ? "green" : "red"%>" stroke="<%=isHit ? "green" : "firebrick"%>"></circle>
+        <circle r="3" cx="<%=svgX%>" cy="<%=svgY%>" fill-opacity="0.9" fill="<%=isHit ? "blue" : "red"%>" stroke="<%=isHit ? "black" : "firebrick"%>"></circle>
     <%
             }
         }
