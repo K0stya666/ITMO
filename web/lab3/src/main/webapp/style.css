@@ -1,0 +1,81 @@
+:root {
+    --main-button-color: #4CAF50;
+    --main-button-color-hover: #45a049;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: cursive;
+    color: #333;
+    font-size: 20px;
+}
+
+body {
+    background-image: url("images/Сотворение Адама.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование контента */
+}
+header h1 {
+    font-size: 24px;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px 60px 20px 10px;
+}
+
+td, th {
+    height: 40px;
+    border: 3px solid #1579ec;
+    padding: 8px;
+    color: red;
+    font-family: cursive;
+}
+
+button {
+    padding: 10px;
+    width: 63px;
+
+    background-color: #90ee90; /* Бледный зелёный */
+    /*background-color: #ffa07a; !* Светлый оранжевый *!*/
+
+    color: #000000;
+    border: 2px none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    /*background-color: var(--main-button-color);*/
+    background-color: #ffa07a;
+}
+
+.selected {
+    background-color: #ffa07a; /* Выделенный цвет */
+    border: 2px solid black;
+}
+
+button:active {
+    /*background-color: #45a049; !* Темно-зеленый при нажатии *!*/
+    transform: scale(0.95); /* Немного уменьшает размер кнопки при нажатии */
+}
+
+.resultButton {
+    width: auto;
+    background-color: var(--main-button-color)  ;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.resultButton:hover {
+    background-color: var(--main-button-color-hover)  ;
+}
