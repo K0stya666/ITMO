@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Лабораторная работа по web-programming 3</title>
+    <h:outputStylesheet name="style.css"/>
+    <!--TODO добавить иконку ссайта-->
+</h:head>
+
+<h:body>
+    <header>
+        <h1>ФИО: Елисеев Константин Иванович</h1>
+        <h1>Группа: P3208</h1>
+        <h1>Вариант: 456752 </h1>
+    </header>
+
+<!--TODO добавить график-->
+
+    <div class="tables-container">
+        <h:form id="areaForm" >
+            <table>
+                <tr>
+                    <!--X value-->
+                    <td>Изменение X:</td>
+                    <td>
+                        <h:commandButton value="-3" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-3)}"/>
+                        <h:commandButton value="-2" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-2)}"/>
+                        <h:commandButton value="-1" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-1)}"/>
+                        <h:commandButton value="0" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(0)}"/>
+                        <h:commandButton value="1" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(1)}"/>
+                        <h:commandButton value="2" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(2)}"/>
+                        <h:commandButton value="3" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(3)}"/>
+                        <h:commandButton value="4" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(4)}"/>
+                        <h:commandButton value="5" type="button" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(5)}"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!--Y value-->
+                    <td>Изменение Y:</td>
+                    <td>
+                        <!--TODO добавить валидатор-->
+                        <h:outputLabel for="y" value="Введите число от -3 до 3"/>
+                        <h:inputText id="y" value="#{controllerBean.y}" required="true"/>
+                        <h:message for="y" style="color:red"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!--R value-->
+                    <td>Изменение R:</td>
+                    <td>
+                        <h:selectOneMenu id="r" value="#{controllerBean.r}">
+                            <f:selectItems itemValue="1" itemLabel="1"/>
+                            <f:selectItems itemValue="2" itemLabel="2"/>
+                            <f:selectItems itemValue="3" itemLabel="3"/>
+                            <f:selectItems itemValue="4" itemLabel="4"/>
+                            <f:selectItems itemValue="5" itemLabel="5"/>
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="display: grid; place-items: center;">
+                <h:commandButton value="Отправить" type="button" action="#{controllerBean.isSubmit}" actionListener="#{controllerBean.submit()}"/>
+            </div>
+        </h:form>
+
+        <table id="resultTable">
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Результат</th>
+                <th>Дата</th>
+            </tr>
+        </table>
+    </div>
+
+    <h:outputScript name="js/validate.js"/>
+    <h:outputScript name="js/interactive.js"/>
+</h:body>
+</html>
