@@ -17,8 +17,9 @@ dependencies {
     compileOnly('jakarta.json.bind:jakarta.json.bind-api:3.0.0')
     compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
 
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // для работы с JSF
+    compileOnly('jakarta.faces:jakarta.faces-api:4.0.0')
+    compileOnly('org.glassfish:jakarta.faces:4.0.0')
 }
 
 test {
