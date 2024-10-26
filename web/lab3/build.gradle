@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'war'
+    id 'org.flywaydb.flyway' version '9.8.1'
 }
 
 group = 'lab3'
@@ -8,23 +9,43 @@ version = ''
 
 repositories {
     mavenCentral()
+    maven {
+        name = "oracle"
+        url = "https://maven.oracle.com"
+        credentials {
+            username = System.getenv("ORACLE_MAVEN_USERNAME")
+            password = System.getenv("ORACLE_MAVEN_PASSWORD")
+        }
+    }
 }
 
 dependencies {
-    compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.0.0')
+    compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1')
+    compileOnly('jakarta.validation:jakarta.validation-api:3.0.2')
+    compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
+    compileOnly('jakarta.faces:jakarta.faces-api:3.0.0')
     compileOnly('jakarta.servlet:jakarta.servlet-api:6.0.0')
+    compileOnly('jakarta.persistence:jakarta.persistence-api:3.1.0')
+    compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.0.0')
     compileOnly('jakarta.json:jakarta.json-api:2.1.1')
     compileOnly('jakarta.json.bind:jakarta.json.bind-api:3.0.0')
-    compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
 
-    // для работы с JSF
-    compileOnly('jakarta.faces:jakarta.faces-api:4.0.0')
-    compileOnly('org.glassfish:jakarta.faces:4.0.0')
+    implementation('org.postgresql:postgresql:42.7.2')
+    implementation('org.hibernate:hibernate-core:6.2.6.Final')
+    implementation('org.primefaces:primefaces:13.0.0:jakarta')
+
+    runtimeOnly('org.flywaydb:flyway-gradle-plugin:9.16.1')
 }
 
-test {
-    useJUnitPlatform()
+flyway {
+    locations = ["filesystem:./sql/migrations"]
+    url = "jdbc:postgresql://127.0.0.1:5432/web3"
+    user = "s367081"
+    password = "s367081"
+    schemas = ['public']
 }
+
+flywayMigrate.dependsOn(classes)
 
 java {
     toolchain {
@@ -33,5 +54,5 @@ java {
 }
 
 war {
-    archiveFileName = 'lab2.war'
+    archiveFileName = 'lab3.war'
 }
