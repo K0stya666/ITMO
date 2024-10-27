@@ -6,7 +6,7 @@
 <h:head>
     <title>Лабораторная работа по web-programming 3</title>
     <h:outputStylesheet name="css/style.css"/>
-    <h:outputScript name="js/validate.js"/>
+    <h:outputScript name="js/buttonHandler.js"/>
     <!--TODO добавить иконку ссайта-->
 </h:head>
 
@@ -91,31 +91,31 @@
                     <!--X value-->
                     <td>Изменение X:</td>
                     <td>
-                        <h:commandButton styleClass="x-button" value="-3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-3)}">
+                        <h:commandButton styleClass="x-button" value="-3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-3)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(-3)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="-2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-2)}">
+                        <h:commandButton styleClass="x-button" value="-2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-2)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(-2)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="-1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-1)}">
+                        <h:commandButton styleClass="x-button" value="-1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-1)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(-1)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="0" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(0)}">
+                        <h:commandButton styleClass="x-button" value="0" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(0)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(0)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(1)}">
+                        <h:commandButton styleClass="x-button" value="1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(1)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(1)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(2)}">
+                        <h:commandButton styleClass="x-button" value="2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(2)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(2)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(3)}">
+                        <h:commandButton styleClass="x-button" value="3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(3)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(3)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="4" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(4)}">
+                        <h:commandButton styleClass="x-button" value="4" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(4)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(4)}"/>
                         </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="5" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(5)}">
+                        <h:commandButton styleClass="x-button" value="5" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(5)}" onclick="handleButtonClick(this)">
                             <f:ajax render="x" listener="#{controllerBean.setX(5)}"/>
                         </h:commandButton>
                     </td>
@@ -148,7 +148,7 @@
             </table>
 
             <div style="display: grid; place-items: center;">
-                <h:commandButton value="Отправить" type="button" action="#{controllerBean.submit()}"/>
+                <h:commandButton value="Отправить" type="button" action="#{controllerBean.saveToDB()}"/>
             </div>
         </h:form>
 
