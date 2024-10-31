@@ -5,24 +5,23 @@
              version="3.0">
     
     <persistence-unit name="PointCheckerPU">
-
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>server.models.Point</class>
 
         <properties>
             <!-- database configurations -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.connection.pool_size" value="100"/>
-            <property name="hibernate.current_session_context_class" value="thread"/>
-            <property name="hibernate.default_schema" value="POINTS" />
+            <property name="eclipselink.target-database" value="Oracle"/>
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.connection-pool.default.max" value="100"/>
+            <property name="eclipselink.default-schema" value="PUBLIC"/>
 
-            <property name="hibernate.connection.url" value="jdbc:postgresql://postgres/web3"/>
-            <property name="hibernate.connection.password" value="666666666"/>
-            <property name="hibernate.connection.username" value="s412939"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/web3"/>
+            <property name="jakarta.persistence.jdbc.user" value="s412939"/>
+            <property name="jakarta.persistence.jdbc.password" value="666666"/>
         </properties>
     </persistence-unit>
-
 
 </persistence>
