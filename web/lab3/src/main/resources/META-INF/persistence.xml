@@ -4,7 +4,7 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     
-    <persistence-unit name="PointCheckerPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="PointCheckerPU">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>server.models.Point</class>
 
