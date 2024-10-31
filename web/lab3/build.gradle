@@ -32,7 +32,7 @@ dependencies {
 
 flyway {
     locations = ["filesystem:./SQL/migrations"]
-    url = "jdbc:oracle:thin:@localhost:5432/web3"
+    url = "jdbc:postgresql://localhost:5432/web3"
     user = "s412939"
     password = "postgres"
     schemas = ['public']
