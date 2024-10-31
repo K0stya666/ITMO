@@ -13,14 +13,6 @@ tasks.withType(JavaCompile).configureEach {
 
 repositories {
     mavenCentral()
-    maven {
-        name = "oracle"
-        url = "https://maven.oracle.com"
-        credentials {
-            username = System.getenv("ORACLE_MAVEN_USERNAME")
-            password = System.getenv("ORACLE_MAVEN_PASSWORD")
-        }
-    }
 }
 
 dependencies {
@@ -34,17 +26,17 @@ dependencies {
     compileOnly('jakarta.json:jakarta.json-api:2.1.1')
     compileOnly('jakarta.json.bind:jakarta.json.bind-api:3.0.0')
 
-    implementation('com.oracle.database.jdbc:ojdbc8:19.8.0.0')
+    implementation('org.postgresql:postgresql:42.7.2')
     implementation('org.eclipse.persistence:eclipselink:3.0.2')
     implementation('org.primefaces:primefaces:13.0.0:jakarta')
 }
 
 flyway {
     locations = ["filesystem:./SQL/migrations"]
-    url = "jdbc:oracle:thin:@localhost:1521/web3"
+    url = "jdbc:oracle:thin:@localhost:5432/web3"
     user = "s412939"
-    password = "666666"
-    schemas = ['PUBLIC']
+    password = "postgres"
+    schemas = ['public']
 }
 
 flywayMigrate.dependsOn(classes)
