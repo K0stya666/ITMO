@@ -32,9 +32,9 @@ dependencies {
 
 flyway {
     locations = ["filesystem:./SQL/migrations"]
-    url = "jdbc:postgresql://localhost:5432/web3"
-    user = "s412939"
-    password = "postgres"
+    url = "jdbc:postgresql://localhost:5432/web"
+    user = "postgres"
+    password = "admin"
     schemas = ['public']
 }
 
