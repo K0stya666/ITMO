@@ -19,8 +19,8 @@
             <property name="eclipselink.default-schema" value="public"/>
 
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/web3"/>
-            <property name="jakarta.persistence.jdbc.user" value="s412939"/>
-            <property name="jakarta.persistence.jdbc.password" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="admin"/>
         </properties>
     </persistence-unit>
 
