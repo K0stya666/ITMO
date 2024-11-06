@@ -1,66 +1,66 @@
 package server.beans;
 
 import jakarta.ejb.Stateless;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import lombok.Getter;
+import lombok.Setter;
 import server.models.Point;
-
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-//@Stateless
+@Getter
+@Setter
+@Stateless
 @Named("controllerBean")
-@RequestScoped
 public class AreaCheck implements Serializable {
     private static final Logger logger = Logger.getLogger(AreaCheck.class.getName());
 
+//    @Inject
     @PersistenceContext(unitName = "PointCheckerPU")
     private EntityManager em;
 
+    @Getter
+    @Setter
     private double x;
+    @Getter
+    @Setter
     private double y;
+    @Getter
+    @Setter
     private double r;
-
-//    private boolean isHit = true;
-
-
-
-    public void setX(double x) {
-        this.x = x;
-    }
-    public double getX() {
-        return x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-    public double getY() {
-        return y;
-    }
-
-    public void setR(double r) {
-        this.r = r;
-    }
-    public double getR() {
-        return r;
-    }
+    private List<Integer> xValues = Arrays.asList(-3, -2, -1, 0, 1, 2, 3, 4, 5);
 
     public boolean checkHit(double x, double y, double r) {
         return true;
     }
+
+
+//    public void setX(double x) {
+//        this.x = x;
+//    }
+//    public double getX() {
+//        return x;
+//    }
+
+    public List<Integer> getxValues() {
+        return xValues;
+    }
+
+
 
     @Transactional
     public String saveToDB() {
         try {
             var isHit = checkHit(x, y, r);
             Point point = new Point(x, y, r, isHit);
+//            em.getTransaction().begin();
             logger.info("x=" + x + ", y=" + y + ", r=" + r + ", isHit=" + isHit);
             em.persist(point);
 //            em.merge(point);
@@ -71,7 +71,7 @@ public class AreaCheck implements Serializable {
             logContextInfo();
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ошибка", "Не удалось сохранить данные."));
-//            e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
     <title>Лабораторная работа по web-programming 3</title>
     <h:outputStylesheet name="css/style.css"/>
     <h:outputScript name="js/buttonHandler.js"/>
     <!--TODO добавить иконку ссайта-->
+    <!--TODO сделать primefaces для commandButto-->
 </h:head>
 
 <h:body>
@@ -91,33 +94,11 @@
                     <!--X value-->
                     <td>Изменение X:</td>
                     <td>
-                        <h:commandButton styleClass="x-button" value="-3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-3)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(-3)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="-2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-2)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(-2)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="-1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(-1)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(-1)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="0" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(0)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(0)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="1" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(1)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(1)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="2" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(2)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(2)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="3" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(3)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(3)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="4" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(4)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(4)}"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="x-button" value="5" action="#{controllerBean.x}" actionListener="#{controllerBean.setX(5)}" onclick="handleButtonClick(this)">
-                            <f:ajax render="x" listener="#{controllerBean.setX(5)}"/>
-                        </h:commandButton>
+                        <ui:repeat var="xValue" value="#{controllerBean.xValues}">
+                            <p:commandButton  type="button" value="#{xValue}">
+                                <f:ajax render="x" listener="#{controllerBean.setX(xValue)}"/>
+                            </p:commandButton>
+                        </ui:repeat>
                     </td>
                 </tr>
 
@@ -148,7 +129,7 @@
             </table>
 
             <div style="display: grid; place-items: center;">
-                <h:commandButton value="Отправить" type="button" action="#{controllerBean.saveToDB()}"/>
+                <h:commandButton value="Отправить" type="submit" action="#{controllerBean.saveToDB}" update="table @form"/>
             </div>
         </h:form>
 
@@ -163,5 +144,6 @@
         </table>
     </div>
     <h:outputScript name="js/interactive.js"/>
+<!--    <h:outputScript name="js/buttonHandler.js"/>-->
 </h:body>
 </html>
