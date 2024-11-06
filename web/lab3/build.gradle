@@ -24,10 +24,13 @@ dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.0.0')
     compileOnly('jakarta.json:jakarta.json-api:2.1.1')
     compileOnly('jakarta.json.bind:jakarta.json.bind-api:3.0.0')
+    compileOnly('org.projectlombok:lombok:1.18.26')
 
     implementation('org.postgresql:postgresql:42.7.2')
     implementation('org.eclipse.persistence:eclipselink:3.0.2')
     implementation('org.primefaces:primefaces:13.0.0:jakarta')
+
+    annotationProcessor('org.projectlombok:lombok:1.18.26')
 }
 
 flyway {
