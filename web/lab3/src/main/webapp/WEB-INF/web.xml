@@ -4,7 +4,7 @@
          version="4.0">
     
     <welcome-file-list>
-        <welcome-file>/pages/main.xhtml</welcome-file>
+        <welcome-file>/pages/start.xhtml</welcome-file>
     </welcome-file-list>
     
     <servlet>
@@ -17,4 +17,13 @@
         <servlet-name>FacesServlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>FacesServlet</servlet-name>-->
+<!--        <url-pattern>*.jsf</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    -->
+<!--    <context-param>-->
+<!--        <param-name>jakarta.faces.RESOURCE_EXCLUDES</param-name>-->
+<!--        <param-value>/jakarta.faces.resource/*</param-value>-->
+<!--    </context-param>-->
 </web-app>
