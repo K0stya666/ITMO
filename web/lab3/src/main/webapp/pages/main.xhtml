@@ -93,7 +93,7 @@
                     <!--X value-->
                     <td>Изменение X:</td>
                     <td>
-                        <ui:repeat var="xValue" value="#{areaCheck.xValues}">
+                        <ui:repeat var="xValue" value="#{areaCheck.XValues}">
                             <p:commandButton  type="button" value="#{xValue}">
                                 <f:ajax render="x" listener="#{areaCheck.setX(xValue)}"/>
                             </p:commandButton>
@@ -106,9 +106,9 @@
                     <td>Изменение Y:</td>
                     <td>
                         <!--TODO добавить валидатор-->
-                        <h:outputLabel for="y"/>
-                        <h:inputText id="y" value="#{areaCheck.y}" required="true" placeholder="введите число от -3 до 3"/>
-                        <h:message for="y" style="color:red"/>
+<!--                        <p:outputLabel for="y"/>-->
+                        <p:inputText id="y" value="#{areaCheck.y}" required="true" placeholder="введите число от -3 до 3"/>
+                        <p:message for="y" style="color:red"/>
                     </td>
                 </tr>
 
@@ -116,32 +116,45 @@
                     <!--R value-->
                     <td>Изменение R:</td>
                     <td>
-                        <h:selectOneMenu id="r" value="#{areaCheck.r}">
+                        <p:selectOneMenu id="r" value="#{areaCheck.r}">
                             <f:selectItem itemValue="1" itemLabel="1"/>
                             <f:selectItem itemValue="2" itemLabel="2"/>
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:selectItem itemValue="4" itemLabel="4"/>
                             <f:selectItem itemValue="5" itemLabel="5"/>
-                        </h:selectOneMenu>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
             </table>
 
             <div style="display: grid; place-items: center;">
-                <h:commandButton value="Отправить" type="submit" action="#{areaCheck.saveToDB}" update="table @form"/>
+                <h:commandButton value="Отправить" type="submit" action="#{areaCheck.submit()}" update="table @form"/>
             </div>
         </h:form>
 
-        <table id="resultTable">
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>Результат</th>
-                <th>Дата</th>
-            </tr>
-        </table>
+        <p:panel header="Результаты проверок" style="margin-top: 20px">
+            <p:dataTable value="#{areaCheck.points}" var="point">
+
+                <p:column headerText="X" sortBy="#{point.x}">
+                    <h:outputText value="#{point.x}"/>
+                </p:column>
+                <p:column headerText="Y" sortBy="#{point.y}">
+                    <h:outputText value="#{point.y}"/>
+                </p:column>
+                <p:column headerText="R" sortBy="#{point.r}">
+                    <h:outputText value="#{point.r}"/>
+                </p:column>
+                <p:column headerText="Результат" sortBy="#{point.hit}"> <!--хммм-->
+                    <h:outputText value="#{point.hit}"/>
+                </p:column>
+                <p:column headerText="Дата" sortBy="#{point.date}">
+                    <h:outputText value="#{point.date}"/>
+<!--                    <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>-->
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
     </div>
-    <h:outputScript name="js/interactive.js"/>
+<!--    <h:outputScript name="js/interactive.js"/>-->
 </h:body>
 </html>
