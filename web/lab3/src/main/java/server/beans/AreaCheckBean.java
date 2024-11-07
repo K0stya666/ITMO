@@ -32,7 +32,20 @@ public class AreaCheckBean implements Serializable {
     private double r;
 
     private List<Integer> XValues = Arrays.asList(-3, -2, -1, 0, 1, 2, 3, 4, 5);
-    private List<Point> points = new ArrayList<>();
+    private List<Point> points;
+
+    @PostConstruct
+    public void init() {
+        x = 0;
+        y = 0;
+        r = 5;
+
+        //
+
+        if (points == null) {
+            points = new ArrayList<>();
+        }
+    }
 
     public String submit() {
         Point point = new Point(x, y, r);
