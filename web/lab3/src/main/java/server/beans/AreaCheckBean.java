@@ -1,17 +1,12 @@
 package server.beans;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
 import server.models.Point;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,8 +43,11 @@ public class AreaCheckBean implements Serializable {
     }
 
     public String submit() {
+        logger.info("PIDORS LOOK!! POINT SUBMITTED!!!");
         Point point = new Point(x, y, r);
         points.add(point);
+        logger.info("ZOEBIS'!! POINT added");
         return null;
     }
+
 }

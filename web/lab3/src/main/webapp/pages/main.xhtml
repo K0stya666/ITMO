@@ -135,6 +135,18 @@
                 <h:commandButton value="Отправить" type="submit" action="#{areaCheck.submit()}" update="table @form"/>
             </div>
         </h:form>
+                <h:form id="hiddenForm" style="display: none">
+                    <p:inputText id="hiddenX"
+                                 value="#{areaCheck.x}"
+                                 required="true"/>
+                    <p:inputText id="hiddenY"
+                                 value="#{areaCheck.y}"
+                                 required="true"/>
+                    <p:inputText id="hiddenR"
+                                 value="#{areaCheck.r}"
+                                 required="true"/>
+                    <h:commandButton id="hiddenSubmit" type="submit" action="#{areaCheck.submit()}" update="@form"/>
+                </h:form>
 
         <p:panel header="Результаты проверок" style="margin-top: 20px">
             <p:dataTable value="#{areaCheck.points}" var="point">
@@ -153,7 +165,7 @@
                 </p:column>
                 <p:column headerText="Дата" sortBy="#{point.date}">
                     <h:outputText value="#{point.date}"/>
-<!--                    <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>-->
+                    <!--                    <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss"/>-->
                 </p:column>
 
             </p:dataTable>
