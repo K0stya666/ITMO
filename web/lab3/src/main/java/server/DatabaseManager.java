@@ -5,21 +5,32 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import server.models.Point;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class DatabaseManager {
+    Logger logger = LoggerFactory.getLogger(DatabaseManager.class);
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("PointCheckerPU");
     EntityManager em = emf.createEntityManager();
+
+    public DatabaseManager() {
+        logger.info("DatabaseManager created");
+    }
 
     public void addPoints(List<Point> points) {
         if (!em.getTransaction().isActive()) em.getTransaction().begin();
         try {
             Stream.of(points).forEach(point -> em.persist(point));
             em.getTransaction().commit();
-        } catch (Exception e) { em.getTransaction().rollback(); }
+            logger.info("ZOEBIS'!! POINT added");
+        } catch (Exception e) {
+            logger.error("PIZDEC'!! POINT not added");
+            e.printStackTrace();
+        }
     }
 
     public List<Point> getPoints() {
