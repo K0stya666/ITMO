@@ -58,6 +58,11 @@ public class AreaCheckBean implements Serializable {
         return null;
     }
 
+    public void clear() {
+        points.clear();
+        db.clearTable();
+    }
+
     private boolean checkHit(double x, double y, double r) {
         return true;
     }
