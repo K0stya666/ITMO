@@ -1,49 +1,70 @@
 package server;
 
 import jakarta.annotation.PreDestroy;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.SessionFactoryBuilder;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server.models.Point;
+
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class DatabaseManager {
+@Stateless
+public class DatabaseManager implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private SessionFactory sessionFactory;
+
     Logger logger = LoggerFactory.getLogger(DatabaseManager.class);
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("PointCheckerPU");
-    EntityManager em = emf.createEntityManager();
+//    @PersistenceContext(unitName = "puris")
+//    EntityManager em;
 
     public DatabaseManager() {
-        logger.info("DatabaseManager created");
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                .configure()
+                .build();
+
+        try {
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
+            StandardServiceRegistryBuilder.destroy(registry);
+            e.printStackTrace();
+            throw e;
+        }
     }
 
-    public void addPoints(List<Point> points) {
-        if (!em.getTransaction().isActive()) em.getTransaction().begin();
-        try {
-            Stream.of(points).forEach(point -> em.persist(point));
-            em.getTransaction().commit();
-            logger.info("ZOEBIS'!! POINT added");
-        } catch (Exception e) {
-            logger.error("PIZDEC'!! POINT not added");
-            e.printStackTrace();
+    public void addPoint(Point point){
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.persist(point);
+            session.getTransaction().commit();
         }
     }
 
     public List<Point> getPoints() {
-        if (!em.getTransaction().isActive()) em.getTransaction().begin();
-        try {
-            TypedQuery<Point> query = em.createQuery("select p from Point p", Point.class);
+//        try {
+//            TypedQuery<Point> query = em.createQuery("select p from Point p", Point.class);
+//            return query.getResultList();
+//        } catch (Exception e) {
+//            throw e; }
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            TypedQuery<Point> query = session.createQuery("from Point", Point.class);
             return query.getResultList();
-        } catch (Exception e) { em.getTransaction().rollback(); throw e; }
+        }
     }
 
     @PreDestroy
     public void clean() {
-        if (em.isOpen() && em != null) em.close();
-        if (emf.isOpen() && emf != null) emf.close();
+        sessionFactory.close();
     }
 }
