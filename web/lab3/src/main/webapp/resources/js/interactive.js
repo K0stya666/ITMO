@@ -1,4 +1,13 @@
-document.getElementById('graph').addEventListener('click', e => {
+window.onload = function() {
+    handleClick();
+}
+
+function handleClick() {
+    document.getElementById('graph').removeEventListener('click', handleEvent);
+    document.getElementById('graph').addEventListener('click', handleEvent);
+}
+
+function handleEvent(e){
     const svg = document.getElementById('graph');
     const svgX = e.offsetX;
     const svgY = e.offsetY;
@@ -14,4 +23,4 @@ document.getElementById('graph').addEventListener('click', e => {
     document.getElementById('hiddenForm:hiddenY').value = y;
     document.getElementById('hiddenForm:hiddenR').value = r;
     document.getElementById('hiddenForm:hiddenSubmit').click();
-});
+}
