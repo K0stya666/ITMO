@@ -4,15 +4,16 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.io.Serializable;
+import lombok.ToString;
+
 import java.util.Date;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "points")
-public class Point implements Serializable {
+public class Point {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,17 +23,20 @@ public class Point implements Serializable {
     private double y;
     private double r;
 
-    @Column(name = "is_hit")
-    private boolean hit;
+    @Column(name = "hit_time")
+    private Date hitTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private boolean hit;
 
     public Point(double x, double y, double r, boolean hit) {
         this.x = x;
         this.y = y;
         this.r = r;
+
         this.hit = hit;
-        this.date = new Date();
+
+        this.hitTime = new Date();
     }
+
+
 }

@@ -40,12 +40,11 @@ td, th {
     font-family: cursive;
 }
 
-button {
+.x-button {
     padding: 10px;
     width: 63px;
 
     background-color: #90ee90; /* Бледный зелёный */
-    /*background-color: #ffa07a; !* Светлый оранжевый *!*/
 
     color: #000000;
     border: 2px none;
@@ -53,8 +52,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    /*background-color: var(--main-button-color);*/
+.x-button:hover {
     background-color: #ffa07a;
 }
 
@@ -63,8 +61,7 @@ button:hover {
     border: 2px solid black;
 }
 
-button:active {
-    /*background-color: #45a049; !* Темно-зеленый при нажатии *!*/
+.x-button:active {
     transform: scale(0.95); /* Немного уменьшает размер кнопки при нажатии */
 }
 
