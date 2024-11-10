@@ -2,11 +2,11 @@ begin;
 
 create table points (
     id SERIAL PRIMARY KEY,
-    X FLOAT NOT NULL,
-    Y FLOAT NOT NULL,
-    R FLOAT NOT NULL,
-    Hit BOOLEAN NOT NULL,
-    Date DATE NOT NULL
+    x FLOAT NOT NULL,
+    y FLOAT NOT NULL,
+    r FLOAT NOT NULL,
+    is_hit BOOLEAN NOT NULL,
+    date DATE NOT NULL
 );
 
 commit;
