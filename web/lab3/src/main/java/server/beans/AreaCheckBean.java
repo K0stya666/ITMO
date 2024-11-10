@@ -2,6 +2,7 @@ package server.beans;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +23,9 @@ public class AreaCheckBean implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(AreaCheckBean.class);
 
     private static final long serialVersionUID = 1L;
-    private DatabaseManager db = new DatabaseManager();
+
+    @Inject
+    private DatabaseManager db;
 
     private double x;
     private double y;
@@ -47,10 +50,10 @@ public class AreaCheckBean implements Serializable {
         logger.info("PIDORS LOOK!! POINT SUBMITTED!!!");
 
         hit = checkHit(x, y, r);
-        Point point = new Point(x, y, r, hit);
+        Point point = new Point(x, y, r, true);
 
         points.add(point);
-        db.addPoints(points);
+        db.addPoint(point);
 
         return null;
     }
