@@ -6,26 +6,22 @@ import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.SessionFactoryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import server.models.Point;
-
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Stateless
 public class DatabaseManager implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private SessionFactory sessionFactory;
-
     Logger logger = LoggerFactory.getLogger(DatabaseManager.class);
 
-//    @PersistenceContext(unitName = "puris")
-//    EntityManager em;
+    @Serial
+    private static final long serialVersionUID = 1L;
+    private final SessionFactory sessionFactory;
 
     public DatabaseManager() {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -50,12 +46,6 @@ public class DatabaseManager implements Serializable {
     }
 
     public List<Point> getPoints() {
-//        try {
-//            TypedQuery<Point> query = em.createQuery("select p from Point p", Point.class);
-//            return query.getResultList();
-//        } catch (Exception e) {
-//            throw e; }
-
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             TypedQuery<Point> query = session.createQuery("from Point", Point.class);
@@ -63,8 +53,16 @@ public class DatabaseManager implements Serializable {
         }
     }
 
+    public void clearTable(){
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.createQuery("delete from Point").executeUpdate();
+            session.getTransaction().commit();
+        }
+    }
+
     @PreDestroy
-    public void clean() {
+    public void close() {
         sessionFactory.close();
     }
 }
