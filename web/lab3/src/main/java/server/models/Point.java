@@ -2,12 +2,14 @@ package server.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "points")
 public class Point implements Serializable {
@@ -21,19 +23,16 @@ public class Point implements Serializable {
     private double r;
 
     @Column(name = "is_hit")
-    private boolean isHit;
+    private boolean hit;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    public Point() {}
-
-    public Point(double x, double y, double r, boolean isHit) {
+    public Point(double x, double y, double r, boolean hit) {
         this.x = x;
         this.y = y;
         this.r = r;
+        this.hit = hit;
         this.date = new Date();
     }
-
-
 }
