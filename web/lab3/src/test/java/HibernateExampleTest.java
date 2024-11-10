@@ -51,13 +51,16 @@ public class HibernateExampleTest {
     }
 
     @Test
-    public void getPoints() {
-//        try {
-//            TypedQuery<Point> query = em.createQuery("select p from Point p", Point.class);
-//            return query.getResultList();
-//        } catch (Exception e) {
-//            throw e; }
+    public void clearTable(){
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.createQuery("delete from Point").executeUpdate();
+            session.getTransaction().commit();
+        }
+    }
 
+    @Test
+    public void getPoints() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             TypedQuery<Point> query = session.createQuery("from Point", Point.class);
@@ -66,53 +69,4 @@ public class HibernateExampleTest {
             }
         }
     }
-//    @Test
-//    public void clear_all() {
-//        try (Session session = sessionFactory.openSession()) {
-//            session.beginTransaction();
-//
-////            var query = session.createQuery("delete from Point");
-//            var query = session.createQuery("delete from Point");
-//            query.executeUpdate();
-//
-//            session.getTransaction().commit();
-//        }
-//    }
-
-
-//    private static PointDao pointDao;
-//
-//    @BeforeAll
-//    protected static void setUp() {
-//        pointDao = PointDao.getInstance();
-//    }
-//
-//    @AfterAll
-//    protected static void tearDown() {
-//        pointDao.close();
-//    }
-//
-//    @Test
-//    public void add() {
-//        Point point = new Point(1, 1, 1);
-//        pointDao.addPoint(point);
-//    }
-//
-//    @Test
-//    public void add2() {
-//        Point point = new Point(1, 1, 1);
-//        pointDao.addPoint(point);
-//    }
-//
-//
-//    @Test
-//    public void add3() {
-//        Point point = new Point(1, 1, 1);
-//        pointDao.addPoint(point);
-//    }
-//    @Test
-//    public void clear() {
-//        pointDao.clear();
-//    }
-
 }
