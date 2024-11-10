@@ -14,11 +14,8 @@ public class DatabaseManager {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("PointCheckerPU");
     EntityManager em = emf.createEntityManager();
 
-    public DatabaseManager() {
-        em.getTransaction().begin();
-    }
-
     public void addPoints(List<Point> points) {
+        if (!em.getTransaction().isActive()) em.getTransaction().begin();
         try {
             Stream.of(points).forEach(point -> em.persist(point));
             em.getTransaction().commit();
@@ -26,6 +23,7 @@ public class DatabaseManager {
     }
 
     public List<Point> getPoints() {
+        if (!em.getTransaction().isActive()) em.getTransaction().begin();
         try {
             TypedQuery<Point> query = em.createQuery("select p from Point p", Point.class);
             return query.getResultList();
