@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <!--TODO добавить часы-->
 
@@ -15,6 +16,10 @@
         <h1>Группа: P3208</h1>
         <h1>Вариант: 456752 </h1>
     </header>
+
+    <h:outputText id="date" value="#{clockBean.getDate()}"/>
+    <h:outputText id="time" value="#{clockBean.getTime()}"/>
+    <p:poll interval="13" update="date time"/>
 
     <h:form>
         <h:commandButton value="Перейти на главную" action="main"/>
