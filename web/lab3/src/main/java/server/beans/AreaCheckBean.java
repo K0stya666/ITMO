@@ -49,8 +49,8 @@ public class AreaCheckBean implements Serializable {
     public String submit() {
         logger.info("PIDORS LOOK!! POINT SUBMITTED!!!");
 
-        hit = checkHit(x, y, r);
-        Point point = new Point(x, y, r, true);
+        hit = checkHit();
+        Point point = new Point(x, y, r, hit);
 
         points.add(point);
         db.addPoint(point);
@@ -63,7 +63,9 @@ public class AreaCheckBean implements Serializable {
         db.clearTable();
     }
 
-    private boolean checkHit(double x, double y, double r) {
-        return true;
+    private boolean checkHit() {
+        if (x <= 0 && y >=0 && y <= 0.5 * x + r/2) return true;
+        if (x * x + y * y <= r * r && x >= 0 && y >= 0) return true;
+        return x <= 0 && y <= 0 && x >= -r / 2 && y >= -r;
     }
 }
