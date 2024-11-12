@@ -52,18 +52,18 @@ td, th {
     cursor: pointer;
 }
 
-.x-button:hover {
-    background-color: #ffa07a;
-}
+/*.x-button:hover {*/
+/*    background-color: #ffa07a;*/
+/*}*/
 
 .selected {
     background-color: #ffa07a; /* Выделенный цвет */
     border: 2px solid black;
 }
 
-.x-button:active {
-    transform: scale(0.95); /* Немного уменьшает размер кнопки при нажатии */
-}
+/*.x-button:active {*/
+/*    transform: scale(0.95); !* Немного уменьшает размер кнопки при нажатии *!*/
+/*}*/
 
 .resultButton {
     width: auto;
@@ -73,6 +73,12 @@ td, th {
     cursor: pointer;
 }
 
-.resultButton:hover {
-    background-color: var(--main-button-color-hover)  ;
+/*.resultButton:hover {*/
+/*    background-color: var(--main-button-color-hover)  ;*/
+/*}*/
+
+.ui-button.switch-button {
+    background-color: white;
+    border-color: black;
+    color: black
 }

@@ -3,11 +3,29 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-<!--TODO добавить часы-->
-
 <h:head>
     <title>Лабораторная работа по web-programming 3</title>
     <h:outputStylesheet name="css/style.css"/>
+
+    <style>
+        .clock-container {
+            text-align: center;
+            margin-top: 50px;
+            font-family: 'Impact', fantasy;
+            background-color: black;
+        }
+        .date {
+            font-size: 24px;
+            color: white;
+            margin: 10px 10px 10px 10px;
+        }
+        .time {
+            font-size: 120px;
+            font-weight: bold;
+            color: white; /* Зеленый цвет */
+            margin: 10px 10px 10px 10px;
+        }
+    </style>
 </h:head>
 
 <h:body>
@@ -17,12 +35,22 @@
         <h1>Вариант: 456752 </h1>
     </header>
 
-    <h:outputText id="date" value="#{clockBean.getDate()}"/>
-    <h:outputText id="time" value="#{clockBean.getTime()}"/>
-    <p:poll interval="13" update="date time"/>
+    <div class="clock-container">
+        <h:outputText id="date" value="#{clockBean.getDate()}" styleClass="date"/>
+        <br/>
+        <h:outputText id="time" value="#{clockBean.getTime()}" styleClass="time"/>
+        <p:poll interval="13" update="date time"/>
+    </div>
+
+    <br/>
 
     <h:form>
-        <h:commandButton value="Перейти на главную" action="main"/>
+        <p:commandButton value="Перейти на главную" action="main"
+                         oncomplete="handleClick()"
+                         style="
+                            background-color: white;
+                            border-color: black;
+                            color: black"/>
     </h:form>
 </h:body>
 
@@ -35,5 +63,5 @@
 
 
 
-
+<script type="text/javascript" src="../resources/js/interactive.js"/>
 </html>
