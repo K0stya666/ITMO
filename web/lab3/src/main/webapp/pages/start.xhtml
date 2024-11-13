@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      >
 
 <h:head>
     <title>Лабораторная работа по web-programming 3</title>
     <h:outputStylesheet name="css/style.css"/>
 
+<!--    <style>-->
+<!--        /*.clock-container {*/-->
+<!--        /*    text-align: center;*/-->
+<!--        /*    margin-top: 50px;*/-->
+<!--        /*    font-family: 'Impact', fantasy;*/-->
+<!--        /*    background-color: black;*/-->
+<!--        /*}*/-->
+<!--        .date {-->
+<!--            font-size: 24px;-->
+<!--            color: white;-->
+<!--            margin: 10px 10px 10px 10px;-->
+<!--        }-->
+<!--        .time {-->
+<!--            font-size: 120px;-->
+<!--            font-weight: bold;-->
+<!--            color: white; /* Зеленый цвет */-->
+<!--            margin: 10px 10px 10px 10px;-->
+<!--        }-->
+<!--    </style>-->
     <style>
-        .clock-container {
-            text-align: center;
-            margin-top: 50px;
-            font-family: 'Impact', fantasy;
-            background-color: black;
-        }
-        .date {
-            font-size: 24px;
-            color: white;
-            margin: 10px 10px 10px 10px;
-        }
-        .time {
-            font-size: 120px;
-            font-weight: bold;
-            color: white; /* Зеленый цвет */
-            margin: 10px 10px 10px 10px;
+        .ui-analog-clock {
+            width: 250px;
+            height: 250px;
+            border: 12px solid #34495e;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #ecf0f1, #bdc3c7);
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
         }
     </style>
 </h:head>
@@ -35,12 +47,20 @@
         <h1>Вариант: 456752 </h1>
     </header>
 
-    <div class="clock-container">
-        <h:outputText id="date" value="#{clockBean.getDate()}" styleClass="date"/>
-        <br/>
-        <h:outputText id="time" value="#{clockBean.getTime()}" styleClass="time"/>
-        <p:poll interval="13" update="date time"/>
+    <div id="clockPanel" class="clock-container">
+<!--        <h:outputText id="date" value="#{clockBean.getDate()}" styleClass="date"/>-->
+<!--        <br/>-->
+<!--        <h:outputText id="time" value="#{clockBean.getTime()}" styleClass="time"/>-->
+<!--        <p:poll interval="13" update="date time"/>-->
+        <h:form>
+
+        <p:clock displayMode="analog"/>
+        </h:form>
+        <!--        <pe:clock mode="analog" style="width: 300px; height: 300px;     " />-->
+
     </div>
+
+    <p:draggable for="clockPanel" handle="handle" revert="false" />
 
     <br/>
 

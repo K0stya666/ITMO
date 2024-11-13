@@ -23,6 +23,7 @@ public class AreaCheckBean implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(AreaCheckBean.class);
 
     private static final long serialVersionUID = 1L;
+    private String selectedX;
 
     @Inject
     private DatabaseManager db;
@@ -37,7 +38,7 @@ public class AreaCheckBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        x = 0;
+//        x = 0;
         y = 0;
         r = 5;
 

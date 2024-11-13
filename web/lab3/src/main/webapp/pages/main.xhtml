@@ -16,6 +16,24 @@
             border-color: black;
             color: black
         }
+
+        .selected-button {
+            background-color: blue !important;
+            border-color: black !important;
+            color: white !important;
+            margin: 5px;
+        }
+
+        .unselected-button {
+            background-color: white !important;
+            border-color: black !important;
+            color: black !important;
+            margin: 5px;
+        }
+
+        .ui-messages-error {
+            margin-top: 10px;
+        }
     </style>
 </h:head>
 
@@ -41,7 +59,7 @@
                 <circle r="3"
                         cx="#{point.x * 40 + 250}"
                         cy="#{- point.y * 40 + 250}"
-                        fill="#{point.hit ? 'green' : 'red'}"/>
+                        fill="#{point.hit ? 'yellow' : 'red'}"/>
             </ui:repeat>
 
             <!--X line-->
@@ -112,17 +130,29 @@
                     <!--X value-->
                     <td>Изменение X:</td>
                     <td>
-                        <ui:repeat var="xValue" value="#{areaCheck.XValues}">
-                            <p:commandButton  type="button" value="#{xValue}"
-                                              style="
-                                                background-color: white;
-                                                border-color: black;
-                                                color: black;
-                                                margin: 5px;
-                                ">
-                                <f:ajax render="x" listener="#{areaCheck.setX(xValue)}"/>
-                            </p:commandButton>
-                        </ui:repeat>
+<!--                        <ui:repeat var="xValue" value="#{areaCheck.XValues}">-->
+<!--                            <p:commandButton  type="button" value="#{xValue}"-->
+<!--                                              style="-->
+<!--                                                background-color: white;-->
+<!--                                                border-color: black;-->
+<!--                                                color: black;-->
+<!--                                                margin: 5px;-->
+<!--                                ">-->
+<!--                                <f:ajax render="x" listener="#{areaCheck.setX(xValue)}"/>-->
+<!--                            </p:commandButton>-->
+<!--                        </ui:repeat>-->
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+                        <!-- Контейнер с кнопками выбора -->
+                        <h:panelGroup id="buttonsPanel">
+                            <ui:repeat var="xValue" value="#{areaCheck.XValues}">
+                                <p:commandButton type="button" value="#{xValue}"
+                                                 styleClass="#{areaCheck.selectedX eq xValue ? 'selected-button' : 'unselected-button'}"
+                                                 actionListener="#{areaCheck.setX(xValue)}"
+                                                 update="buttonsPanel messages">
+                                </p:commandButton>
+                            </ui:repeat>
+                        </h:panelGroup>
                     </td>
                 </tr>
 
@@ -130,9 +160,10 @@
                     <!--Y value-->
                     <td>Изменение Y:</td>
                     <td>
-                        <!--TODO добавить валидатор-->
-                        <p:inputText id="y" value="#{areaCheck.y}" required="true" placeholder="введите число от -3 до 3" widgetVar="yText"/>
-                        <p:message for="y" style="color:red"/>
+                        <p:inputText id="y" value="#{areaCheck.y}" required="true" widgetVar="yText" validatorMessage="Y must be in [-3; 3]" placeholder="введите значение от -3 до 3">
+                        <f:validateDoubleRange minimum="-3" maximum="3"/>
+                        </p:inputText>
+                        <p:messages  showDetail="false"/>
                     </td>
                 </tr>
 
