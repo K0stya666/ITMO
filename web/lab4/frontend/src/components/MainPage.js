@@ -1,14 +1,24 @@
 import React from 'react';
-import Header from './Header';
-// import { useSelector, useDispatch } from 'react-redux';
+import InputForm from "./InputForm";
+import {useNavigate} from "react-router-dom";
+import {Button} from "@mui/material";
 
 const MainPage = () => {
-    // const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate("/");
+    }
 
     return (
         <div>
-            {/*<p>hui</p>*/}
-            <Header />
+            <InputForm />
+            <Button
+                onClick={handleButtonClick}
+                variant="contained"
+                color="black"
+            >На главную</Button>
         </div>
     );
 }
