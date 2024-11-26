@@ -1,6 +1,7 @@
 import './styles/App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MainPage from "./components/MainPage";
+import StartPage from "./components/StartPage";
 
 function App() {
 
@@ -8,14 +9,9 @@ function App() {
       <Router>
           <Routes>
 
-              {/* Перенаправление с корневого пути на /main */}
-              <Route path="/" element={<Navigate to={'/main'} replace={true} />} />
-
-              {/* Главная страница */}
-              <Route path="/main" element={<MainPage />} />
-
-              {/* Маршрут для несуществующих страниц (404) */}
-              <Route path="*" element={<h1>404 - Страница Не Найдена</h1>} />
+              <Route path="/" element={<StartPage/>} />
+              <Route path="/start" element={<StartPage/>} />
+              <Route path="/main" element={<MainPage/>} />
 
           </Routes>
       </Router>

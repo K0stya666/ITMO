@@ -20,7 +20,7 @@ const Header = () => {
                 }}
             >
                 <Typography variant="h6" component="div">
-                    Лабораторная работа по Web Programming 3
+                    Лабораторная работа по Web Programming 4
                 </Typography>
             </Paper>
 
