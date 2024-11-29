@@ -3,32 +3,50 @@ plugins {
   id 'war'
 }
 
-group 'lab4'
-version '1.0-SNAPSHOT'
+group = 'lab4'
+version = ''
 
 repositories {
   mavenCentral()
 }
 
 ext {
-  junitVersion = '5.11.0-M2'
+  javaeeVersion = '8.0'
+  hibernateVersion = '5.4.32.Final'
+  jaxrsVersion = '2.1.1'
+  postgresVersion = '42.7.4'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+dependencies {
+  //JavaEE
+//    providedCompile "javax:javaee-api:$javaeeVersion"
+  implementation("javax:javaee-api:$javaeeVersion")
+
+  //hibernate
+  implementation "org.hibernate:hibernate-core:$hibernateVersion"
+
+  // JAX-RS для REST API
+  implementation "javax.ws.rs:javax.ws.rs-api:$jaxrsVersion"
+
+  // PostgreSQL JDBC Driver
+  runtimeOnly "org.postgresql:postgresql:$postgresVersion"
+
+  // Логирование
+  implementation 'org.slf4j:slf4j-api:1.7.30'
+  implementation 'org.slf4j:slf4j-simple:1.7.30'
+
+  testImplementation platform('org.junit:junit-bom:5.10.0')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+war {
+  archiveFileName = 'lab4.war'
+}
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
 }
-
-dependencies {
-  compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0')
-  compileOnly('jakarta.ws.rs:jakarta.ws.rs-api:4.0.0')
-  compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
-
-  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-}
-
-test {
-useJUnitPlatform()}
