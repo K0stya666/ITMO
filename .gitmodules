@@ -1,0 +1,3 @@
+[submodule "web/lab4"]
+	path = web/lab4
+	url = https://github.com/K0stya666/web4.git
